@@ -3,7 +3,7 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import typeDefs from '../Graphql/typeDefs.js';
 import resolvers from '../Graphql/resolvers.js';
-import './Issue.js';
+
 
 mongoose.connect('mongodb://localhost:27017/smart-city-management');
 
@@ -21,7 +21,6 @@ db.on('disconnected', () => {
   console.log('Disconnected from the Mongodb')
 })
 
-const Issue = mongoose.model('Issue')
 
 const server = new ApolloServer({
     typeDefs,

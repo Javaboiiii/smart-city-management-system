@@ -1,3 +1,4 @@
+
 const typeDefs = `#graphql 
     type Issue { 
         problem : String! 
@@ -6,8 +7,19 @@ const typeDefs = `#graphql
         phone : String! 
     }
 
+    input IssueInput { 
+        problem : String! 
+        username : String! 
+        email : String! 
+        phone : String!
+    }
+
     type Query { 
         issues : [Issue]
+    }
+
+    type Mutation {
+        issueInput(newIssue: IssueInput!) : Issue!
     }
 `
 

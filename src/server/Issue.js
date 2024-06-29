@@ -19,4 +19,4 @@ const IssueSchema = new mongoose.Schema({
     }
 })
 
-mongoose.model('Issue', IssueSchema)
+export default mongoose.model('Issues', IssueSchema)

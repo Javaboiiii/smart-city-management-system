@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "npm-run-all --parallel start:dev start:server",
+    "start": "npm-run-all --parallel start:dev start:server",
     "start:dev": "vite",
     "start:server": "nodemon src/server/server.js",
     "build": "vite build",

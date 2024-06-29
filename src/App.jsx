@@ -5,12 +5,17 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Form from './components/Form/Form';
+import FormFetch from './components/IssueFetch/IssueFetch';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <><Form/></>,
   },
+  {
+    path: '/issues', 
+    element : <><FormFetch/></>
+  }
 ]);
 
 function App() {

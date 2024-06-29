@@ -4,6 +4,11 @@ import mongoose from 'mongoose'
 const Issues = mongoose.model('Issues')
 
 const resolvers = { 
+    Query : {
+        async issues() {
+            return await Issues.find()
+        }
+    },
     Mutation : {
         async issueInput(parent, { newIssue }) {
             const problem = await Issues.findOne({problem : newIssue.problem})

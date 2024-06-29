@@ -76,12 +76,14 @@ const Form = () => {
                     type="number"
                     className="w-full px-3 py-2 border rounded-md text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500"
                     name="phone"
+                    maxLength={10}
+                    minLength={10}
                     placeholder='Phone'
                     onChange={handleChange}
                     required
                 />
                 <textarea
-                    className="w-full px-3 py-2 border rounded-md text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500"
+                    className="w-full resize-none px-3 py-2 border rounded-md text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500"
                     name="problem"
                     cols="30"
                     rows="10"

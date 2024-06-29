@@ -4,11 +4,12 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Form from './components/Form/Form';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <><Form/></>,
   },
 ]);
 

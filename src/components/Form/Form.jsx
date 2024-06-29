@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
+import { useMutation, gql } from '@apollo/client';
+
+const Add_Issue = gql`
+    mutation IssueInput($newIssue: IssueInput!) {
+        issueInput(newIssue : $newIssue) {
+            email
+            phone
+            problem
+            username
+        }
+}
+`
 
 const Form = () => {
+    
+
     const [issue, setIssue] = useState({
         username: '',
         problem: '',
@@ -15,9 +29,24 @@ const Form = () => {
         });
     }
 
+
+    const [issueInput, { data, loading, error }] = useMutation(Add_Issue, {
+        variables : {
+            newIssue : {
+                username : "John Doe", 
+                phone : '123456789', 
+                email : 'example@gmail.com', 
+                problem : 'Sample Problem'
+            }
+        }
+    });
+    if (loading) return 'Submitting...';
+    if (error) return `Submission error! ${error.message}`;
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Add your form submission logic here
+        issueInput({ variables : {
+            newIssue : issue
+        }})
         console.log(issue); // For example, log the state
     }
 
@@ -26,7 +55,7 @@ const Form = () => {
             <div className="bg-blue-500 text-white text-center py-2 px-4 rounded-md mb-4">
                 <h1 className="text-lg font-bold">Report Problem</h1>
             </div>
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 place-items-center">
                 <input
                     type="text"
                     className="w-full px-3 py-2 border rounded-md text-sm placeholder-gray-400 focus:outline-none focus:border-blue-500"
